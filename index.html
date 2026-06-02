@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Disney World Trip</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231d3d7a'/%3E%3Ccircle cx='50' cy='56' r='25' fill='%23f6d365'/%3E%3Ccircle cx='27' cy='33' r='14' fill='%23f6d365'/%3E%3Ccircle cx='73' cy='33' r='14' fill='%23f6d365'/%3E%3C/svg%3E" />
+<style>
+  :root {
+    --blue: #1d3d7a;
+    --blue-soft: #3763ad;
+    --gold: #f6d365;
+    --coral: #ef6f6c;
+    --cream: #fffaf0;
+    --ink: #1f2a44;
+    --paper: #fffdf8;
+    --line: rgba(29, 61, 122, 0.16);
+    --paper-grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch' seed='12'/><feColorMatrix values='0 0 0 0 0.20  0 0 0 0 0.17  0 0 0 0 0.10  0 0 0 0.09 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--ink);
+    background-color: var(--cream);
+    background-image:
+      var(--paper-grain),
+      radial-gradient(circle at 15% 10%, rgba(246, 211, 101, 0.18), transparent 34%),
+      radial-gradient(circle at 90% 20%, rgba(239, 111, 108, 0.10), transparent 32%),
+      radial-gradient(circle at 50% 100%, rgba(29, 61, 122, 0.10), transparent 45%);
+    background-size: 220px 220px, auto, auto, auto;
+    line-height: 1.6;
+  }
+
+  header {
+    text-align: center;
+    padding: 3rem 1.5rem 2rem;
+    border-bottom: 1px solid var(--line);
+    background: rgba(255, 253, 248, 0.85);
+  }
+
+  .ears {
+    display: inline-grid;
+    grid-template-columns: 16px 32px 16px;
+    align-items: end;
+    gap: 2px;
+    margin-bottom: 0.75rem;
+  }
+  .ears span { display: block; background: var(--gold); border: 3px solid var(--blue); }
+  .ears .ear { width: 22px; height: 22px; border-radius: 50%; }
+  .ears .head { width: 38px; height: 38px; border-radius: 50%; }
+
+  h1 {
+    font-family: 'Didot', 'Bodoni MT', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--blue);
+    margin-bottom: 0.25rem;
+  }
+
+  .subtitle {
+    color: var(--coral);
+    font-size: 0.95rem;
+    font-style: italic;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  main, .carousel { max-width: 760px; margin: 0 auto; }
+  main { padding: 2rem 1.5rem 4rem; }
+  .carousel { padding: 2rem 1.5rem 0; }
+
+  .day, .carousel-frame {
+    background-color: var(--paper);
+    background-image: var(--paper-grain);
+    background-size: 220px 220px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 6px 22px rgba(29, 61, 122, 0.07);
+    overflow: hidden;
+  }
+
+  .day { margin-bottom: 1.5rem; }
+
+  .day-header {
+    padding: 1.2rem 1.4rem;
+    background: linear-gradient(135deg, var(--blue), var(--blue-soft));
+    color: var(--cream);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 3px solid var(--gold);
+  }
+
+  .day-title {
+    font-family: 'Didot', 'Bodoni MT', Georgia, serif;
+    font-size: 1.35rem;
+    letter-spacing: 0.05em;
+  }
+
+  .day-date {
+    color: var(--gold);
+    font-size: 0.85rem;
+    font-style: italic;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .blocks { padding: 0.4rem 0; }
+  .block {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 1.15rem;
+    padding: 1.05rem 1.4rem;
+    border-bottom: 1px dashed var(--line);
+  }
+  .block:last-child { border-bottom: none; }
+  .block-time {
+    color: var(--blue-soft);
+    font-family: 'Didot', 'Bodoni MT', Georgia, serif;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .block-content h3 { color: var(--blue); font-size: 1.05rem; margin-bottom: 0.15rem; }
+  .block-content p { opacity: 0.86; font-size: 0.95rem; }
+  .placeholder { color: var(--coral); font-style: italic; opacity: 0.78; }
+  .travel { background: linear-gradient(90deg, rgba(246, 211, 101, 0.14), transparent); }
+
+  .map-link {
+    display: inline-block;
+    margin-top: 0.35rem;
+    color: var(--blue-soft);
+    font-size: 0.72rem;
+    font-style: italic;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    opacity: 0.75;
+  }
+  .map-link::before { content: '↗ '; }
+  .map-link:hover { opacity: 1; color: var(--coral); }
+
+  .carousel-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    aspect-ratio: 4 / 3;
+    scrollbar-width: none;
+    background: #15203a;
+  }
+  .carousel-track::-webkit-scrollbar { display: none; }
+  .carousel-slide { flex: 0 0 100%; scroll-snap-align: center; display: flex; align-items: center; justify-content: center; }
+  .carousel-slide img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .carousel-counter {
+    position: absolute;
+    right: 12px;
+    bottom: 10px;
+    background: rgba(29, 61, 122, 0.78);
+    color: var(--cream);
+    border-radius: 999px;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.8rem;
+  }
+  .carousel-frame { position: relative; }
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(29, 61, 122, 0.76);
+    color: var(--cream);
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+  .carousel-btn.prev { left: 10px; }
+  .carousel-btn.next { right: 10px; }
+
+  footer { text-align: center; padding: 1rem 1.5rem 3rem; color: var(--blue-soft); font-style: italic; }
+
+  @media (max-width: 540px) {
+    main { padding: 1.25rem 0.75rem 3rem; }
+    .carousel { padding: 1.25rem 0.75rem 0; }
+    .block { grid-template-columns: 1fr; gap: 0.25rem; }
+    .day-header { padding: 1rem 1.1rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="ears" aria-hidden="true"><span class="ear"></span><span class="head"></span><span class="ear"></span></div>
+  <h1>Disney World</h1>
+  <div class="subtitle">Trip itinerary home base</div>
+</header>
+
+<section class="carousel" id="carousel" aria-label="Trip photos" hidden>
+  <div class="carousel-frame">
+    <button class="carousel-btn prev" type="button" aria-label="Previous photo">&#8592;</button>
+    <div class="carousel-track" id="carousel-track"></div>
+    <button class="carousel-btn next" type="button" aria-label="Next photo">&#8594;</button>
+    <div class="carousel-counter" id="carousel-counter">1 / 1</div>
+  </div>
+</section>
+
+<main>
+  <section class="day" data-date="YYYY-MM-DD">
+    <div class="day-header">
+      <div class="day-title">Arrival Day</div>
+      <div class="day-date">Date TBD</div>
+    </div>
+    <div class="blocks">
+      <div class="block travel">
+        <div class="block-time">TBD</div>
+        <div class="block-content">
+          <h3>Travel to Orlando</h3>
+          <p class="placeholder">Add flight / drive details, confirmation numbers, rental car, or shuttle notes.</p>
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-time">TBD</div>
+        <div class="block-content">
+          <h3>Hotel / resort check-in</h3>
+          <p class="placeholder">Add resort address, reservation details, check-in time, parking, and room notes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="day" data-date="YYYY-MM-DD">
+    <div class="day-header">
+      <div class="day-title">Park Day</div>
+      <div class="day-date">Date TBD</div>
+    </div>
+    <div class="blocks">
+      <div class="block">
+        <div class="block-time">Morning</div>
+        <div class="block-content">
+          <h3>Rope drop / first park</h3>
+          <p class="placeholder">Add park reservation, Lightning Lane priorities, breakfast, and must-do rides.</p>
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-time">Midday</div>
+        <div class="block-content">
+          <h3>Meal / rest window</h3>
+          <p class="placeholder">Add dining reservation, mobile order ideas, or resort break plan.</p>
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-time">Evening</div>
+        <div class="block-content">
+          <h3>Fireworks / final rides</h3>
+          <p class="placeholder">Add showtime, viewing spot, transportation plan, and backup options.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="day-header">
+      <div class="day-title">Ideas & Recommendations</div>
+      <div class="day-date">Parking lot</div>
+    </div>
+    <div class="blocks">
+      <div class="block">
+        <div class="block-time">Anytime</div>
+        <div class="block-content">
+          <h3>Things to research</h3>
+          <p class="placeholder">Dining reservations, Lightning Lane strategy, kid breaks, weather/rain plan, transportation between parks, must-have photos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>Ready for a little magic.</footer>
+
+<script>
+  (function () {
+    const section = document.getElementById('carousel');
+    const track = document.getElementById('carousel-track');
+    const counter = document.getElementById('carousel-counter');
+    if (!section || !track || !counter) return;
+
+    const shuffle = arr => {
+      const a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    };
+
+    fetch('photos/manifest.json', { cache: 'no-cache' })
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(raw => {
+        if (!Array.isArray(raw) || raw.length === 0) return;
+        const list = shuffle(raw);
+        list.forEach((name, i) => {
+          const slide = document.createElement('div');
+          slide.className = 'carousel-slide';
+          const img = document.createElement('img');
+          img.src = 'photos/' + name;
+          img.alt = 'Disney World trip photo ' + (i + 1);
+          img.loading = i === 0 ? 'eager' : 'lazy';
+          img.decoding = 'async';
+          slide.appendChild(img);
+          track.appendChild(slide);
+        });
+        section.hidden = false;
+        counter.textContent = '1 / ' + list.length;
+
+        const prev = section.querySelector('.carousel-btn.prev');
+        const next = section.querySelector('.carousel-btn.next');
+        const slideWidth = () => track.clientWidth;
+        const indexFromScroll = () => Math.round(track.scrollLeft / slideWidth());
+        const updateCounter = () => { counter.textContent = (indexFromScroll() + 1) + ' / ' + list.length; };
+        const goTo = i => track.scrollTo({ left: i * slideWidth(), behavior: 'smooth' });
+        const advance = delta => goTo((indexFromScroll() + delta + list.length) % list.length);
+        prev.addEventListener('click', () => advance(-1));
+        next.addEventListener('click', () => advance(1));
+        track.addEventListener('scroll', () => requestAnimationFrame(updateCounter));
+      })
+      .catch(() => { /* no manifest/photos yet → carousel stays hidden */ });
+  })();
+</script>
+</body>
+</html>

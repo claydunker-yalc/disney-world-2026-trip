@@ -1,0 +1,7 @@
+# Original full-resolution photos. The carousel reads from /photos
+# (web-optimized output of scripts/resize-photos.sh), so raw originals stay local.
+photos-raw/
+
+# OS metadata
+.DS_Store
+Thumbs.db
