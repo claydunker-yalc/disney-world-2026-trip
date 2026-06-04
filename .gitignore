@@ -2,6 +2,9 @@
 # (web-optimized output of scripts/resize-photos.sh), so raw originals stay local.
 photos-raw/
 
+# Downloaded source material / OCR work products from Drive or chat exports.
+drive-downloads/
+
 # OS metadata
 .DS_Store
 Thumbs.db

@@ -28,6 +28,7 @@ When a batch of photos is added, note:
 - 2026-06-01: Initial scaffold created.
 - 2026-06-01: Repo renamed to `disney-world-2026-trip`.
 - 2026-06-01: Added update-as-we-go workflow notes.
+- 2026-06-04: Downloaded Google Drive folder `Disney trip 2026`, ran OCR/vision over 40 screenshots, and created `trip-so-far.md`.
 
 ## Operational notes
 
