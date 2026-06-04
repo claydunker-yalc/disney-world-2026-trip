@@ -8,6 +8,7 @@ Live site: https://claydunker-yalc.github.io/disney-world-2026-trip/
 
 ```text
 index.html              # main itinerary page
+recap.html              # trip recap built from captured notes
 photos/                 # committed, web-optimized carousel images
 photos/manifest.json    # ordered list consumed by the carousel
 photos-raw/             # local-only full-resolution originals; ignored by git
