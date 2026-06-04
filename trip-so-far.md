@@ -190,9 +190,41 @@ _Source reconstruction from Google Drive folder `Disney trip 2026` and OCR/visio
 - The family watched the end of the **live-action Lilo & Stitch**.
 - Clay called it an **amazing day**.
 
+### Photo batch added June 4
+
+Added a 15-photo Animal Kingdom batch from Clay's Discord upload into the site photo assets:
+
+- Pandora / Tree of Life-style family photo with the floating mountains in the background.
+- Table-break shots with Poppy: saluting, smiling, and showing a little figure/toy.
+- Character sign photo with the girls near Bluey/Bingo artwork.
+- Poncho photos before/around water-ride time, including a pink poncho and a red poncho thumbs-up.
+- Nomad Lounge / patio-style break with the girls on a couch and a close-up of a themed drink.
+- Several Kali River Rapids boat photos with the girls in ponchos, including waterfall shots and laughing/smiling close-ups.
+- Indoor family photo in a large lodge/restaurant-style space.
+- Garden/statue detail photo from the park.
+
+Photo files are staged as `photos/2026-06-03-animal-kingdom-01.jpg` through `photos/2026-06-03-animal-kingdom-15.jpg`, with raw copies in `photos-raw/`.
+
 ---
 
-## June 4, 2026 — Admin / recap work
+## June 4, 2026 — Animal Kingdom Lodge to Polynesian Tower
+
+### Morning / packing
+
+- Woke up and packed up at **Animal Kingdom Lodge**.
+- Breakfast plan: **Boma at 10:00 AM**.
+
+### Resort move / pool time
+
+- Took a **Lyft to the Polynesian Tower**.
+- Checked in at the Poly Tower.
+- Planned **pool time** after check-in.
+
+### Trader Sam’s
+
+- **Clay to Trader Sam’s at 1:30 PM**.
+
+### Admin / recap work
 
 - Clay asked Donn to check out the **Disney 2026 GitHub project**.
 - Donn reported adding a top nav with at least **Itinerary** visible in the screenshot.

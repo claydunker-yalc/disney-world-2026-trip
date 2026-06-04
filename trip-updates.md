@@ -23,6 +23,8 @@ When a batch of photos is added, note:
 - whether `scripts/resize-photos.sh` has been run
 - whether the live page was verified
 
+- 2026-06-04: Added Clay's 15-photo Discord upload as the June 3 Animal Kingdom batch. Raw copies are in `photos-raw/2026-06-03-animal-kingdom-01.jpeg` through `photos-raw/2026-06-03-animal-kingdom-15.jpeg`; optimized site images are in `photos/2026-06-03-animal-kingdom-01.jpg` through `photos/2026-06-03-animal-kingdom-15.jpg`; `photos/manifest.json` was rewritten to include only this June 3 batch.
+
 ## Change log
 
 - 2026-06-01: Initial scaffold created.
