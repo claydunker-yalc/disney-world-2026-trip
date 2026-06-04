@@ -33,10 +33,12 @@
     line-height: 1.6;
   }
   header { text-align: center; padding: 3rem 1.5rem 2rem; border-bottom: 1px solid var(--line); background: rgba(255, 253, 248, 0.88); }
-  .ears { display: inline-grid; grid-template-columns: 16px 32px 16px; align-items: end; gap: 2px; margin-bottom: 0.75rem; }
-  .ears span { display: block; background: var(--gold); border: 3px solid var(--blue); }
-  .ears .ear { width: 22px; height: 22px; border-radius: 50%; }
-  .ears .head { width: 38px; height: 38px; border-radius: 50%; }
+  .ears { position: relative; display: inline-block; width: 92px; height: 64px; margin-bottom: 0.8rem; }
+  .ears span { position: absolute; display: block; background: var(--gold); border: 5px solid var(--blue); border-radius: 50%; box-shadow: 0 2px 0 rgba(20, 33, 61, 0.08); }
+  .ears .head { width: 56px; height: 56px; left: 50%; bottom: 0; transform: translateX(-50%); z-index: 2; }
+  .ears .ear { width: 36px; height: 36px; top: 9px; z-index: 1; }
+  .ears .ear:first-child { left: 5px; }
+  .ears .ear:last-child { right: 5px; }
   h1 { font-family: 'Didot', 'Bodoni MT', Georgia, serif; font-size: clamp(2rem, 5vw, 3.1rem); font-weight: 400; letter-spacing: 0.08em; color: var(--blue); margin-bottom: 0.25rem; }
   .subtitle { color: var(--coral); font-size: 0.95rem; font-style: italic; letter-spacing: 0.14em; text-transform: uppercase; }
   .site-nav { margin-top: 1.25rem; display: flex; justify-content: center; flex-wrap: wrap; gap: 0.55rem; }
