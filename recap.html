@@ -83,6 +83,18 @@
   .moment-time { color: var(--blue-soft); font-weight: 700; }
   .moment h3 { color: var(--blue); font-size: 1rem; margin-bottom: 0.1rem; }
   .moment p { color: var(--muted); font-size: 0.95rem; }
+  .carousel { margin: 1.2rem 0 1.8rem; }
+  .carousel-frame { background-color: var(--paper); background-image: var(--paper-grain); background-size: 220px 220px; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 8px 26px rgba(29, 61, 122, 0.08); overflow: hidden; position: relative; }
+  .carousel-heading { padding: 1rem 1.2rem; background: linear-gradient(135deg, var(--blue), var(--blue-soft)); color: var(--cream); border-bottom: 3px solid var(--gold); }
+  .carousel-heading .eyebrow { color: var(--gold); }
+  .carousel-heading h2 { font-family: 'Didot', 'Bodoni MT', Georgia, serif; font-weight: 400; letter-spacing: 0.05em; line-height: 1.15; font-size: clamp(1.35rem, 3vw, 2rem); margin-top: 0.15rem; }
+  .carousel-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; aspect-ratio: 4 / 3; scrollbar-width: none; background: #15203a; }
+  .carousel-track::-webkit-scrollbar { display: none; }
+  .carousel-slide { flex: 0 0 100%; scroll-snap-align: center; display: flex; align-items: center; justify-content: center; }
+  .carousel-slide img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .carousel-counter { position: absolute; right: 12px; bottom: 10px; background: rgba(29, 61, 122, 0.78); color: var(--cream); border-radius: 999px; padding: 0.25rem 0.6rem; font-size: 0.8rem; }
+  .carousel-btn { position: absolute; top: calc(50% + 2.8rem); transform: translateY(-50%); z-index: 2; width: 38px; height: 38px; border-radius: 50%; border: none; background: rgba(29, 61, 122, 0.76); color: var(--cream); cursor: pointer; font-size: 1.2rem; }
+  .carousel-btn.prev { left: 10px; } .carousel-btn.next { right: 10px; }
   .note-card { padding: 1.2rem 1.35rem; margin-top: 1.4rem; }
   footer { text-align: center; padding: 1rem 1.5rem 3rem; color: var(--blue-soft); font-style: italic; }
   @media (max-width: 760px) {
@@ -123,6 +135,19 @@
     <div class="stat"><strong>2×</strong><span>FOP + Everest for Poppy</span></div>
     <div class="stat"><strong>3</strong><span>Lions on Safari</span></div>
     <div class="stat"><strong>Open–close</strong><span>Animal Kingdom first</span></div>
+  </section>
+
+  <section class="carousel" id="carousel" aria-label="June 3 Animal Kingdom photos" hidden>
+    <div class="carousel-frame">
+      <div class="carousel-heading">
+        <div class="eyebrow">Photo reel</div>
+        <h2>June 3 Animal Kingdom</h2>
+      </div>
+      <button class="carousel-btn prev" type="button" aria-label="Previous photo">&#8592;</button>
+      <div class="carousel-track" id="carousel-track"></div>
+      <button class="carousel-btn next" type="button" aria-label="Next photo">&#8594;</button>
+      <div class="carousel-counter" id="carousel-counter">1 / 1</div>
+    </div>
   </section>
 
   <section class="recap-day" id="june-2">
@@ -274,5 +299,36 @@
 </main>
 
 <footer>Small notes, saved magic.</footer>
+<script>
+  (function () {
+    const section = document.getElementById('carousel');
+    const track = document.getElementById('carousel-track');
+    const counter = document.getElementById('carousel-counter');
+    if (!section || !track || !counter) return;
+    const shuffle = arr => {
+      const a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+      return a;
+    };
+    fetch('photos/manifest.json', { cache: 'no-cache' })
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(raw => {
+        if (!Array.isArray(raw) || raw.length === 0) return;
+        const list = shuffle(raw);
+        list.forEach((name, i) => {
+          const slide = document.createElement('div'); slide.className = 'carousel-slide';
+          const img = document.createElement('img'); img.src = 'photos/' + name; img.alt = 'June 3 Animal Kingdom trip photo ' + (i + 1); img.loading = i === 0 ? 'eager' : 'lazy'; img.decoding = 'async';
+          slide.appendChild(img); track.appendChild(slide);
+        });
+        section.hidden = false; counter.textContent = '1 / ' + list.length;
+        const prev = section.querySelector('.carousel-btn.prev'); const next = section.querySelector('.carousel-btn.next');
+        const slideWidth = () => track.clientWidth; const indexFromScroll = () => Math.round(track.scrollLeft / slideWidth());
+        const updateCounter = () => { counter.textContent = (indexFromScroll() + 1) + ' / ' + list.length; };
+        const goTo = i => track.scrollTo({ left: i * slideWidth(), behavior: 'smooth' }); const advance = delta => goTo((indexFromScroll() + delta + list.length) % list.length);
+        prev.addEventListener('click', () => advance(-1)); next.addEventListener('click', () => advance(1)); track.addEventListener('scroll', () => requestAnimationFrame(updateCounter));
+      })
+      .catch(() => { /* no manifest/photos yet → carousel stays hidden */ });
+  })();
+</script>
 </body>
 </html>

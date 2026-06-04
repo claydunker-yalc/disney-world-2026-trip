@@ -42,10 +42,8 @@
   .site-nav { margin-top: 1.25rem; display: flex; justify-content: center; flex-wrap: wrap; gap: 0.55rem; }
   .site-nav a { color: var(--blue); background: rgba(246, 211, 101, 0.24); border: 1px solid rgba(29, 61, 122, 0.18); border-radius: 999px; padding: 0.4rem 0.85rem; text-decoration: none; font-size: 0.88rem; letter-spacing: 0.06em; text-transform: uppercase; }
   .site-nav a.active { color: var(--cream); background: var(--blue); border-color: var(--blue); }
-  main, .carousel { max-width: 820px; margin: 0 auto; }
-  main { padding: 2rem 1.5rem 4rem; }
-  .carousel { padding: 2rem 1.5rem 0; }
-  .day, .carousel-frame { background-color: var(--paper); background-image: var(--paper-grain); background-size: 220px 220px; border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 6px 22px rgba(29, 61, 122, 0.07); overflow: hidden; }
+  main { max-width: 820px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .day { background-color: var(--paper); background-image: var(--paper-grain); background-size: 220px 220px; border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 6px 22px rgba(29, 61, 122, 0.07); overflow: hidden; }
   .day { margin-bottom: 1.6rem; }
   .day-header { padding: 1.15rem 1.35rem; background: linear-gradient(135deg, var(--blue), var(--blue-soft)); color: var(--cream); display: flex; justify-content: space-between; align-items: center; gap: 1rem; border-bottom: 3px solid var(--gold); }
   .day-date { color: var(--gold); font-size: 0.88rem; font-style: italic; letter-spacing: 0.1em; text-transform: uppercase; }
@@ -69,14 +67,6 @@
   .rides-list li { display: grid; grid-template-columns: minmax(180px, 1fr) auto; gap: 0.75rem; align-items: center; padding: 0.7rem 0.8rem; border: 1px solid rgba(11, 95, 165, 0.15); border-radius: 8px; background: rgba(255,255,255,0.52); }
   .rides-list li strong { color: var(--blue); }
   .rides-list li span { color: var(--muted); font-size: 0.9rem; text-align: right; }
-  .carousel-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; aspect-ratio: 4 / 3; scrollbar-width: none; background: #15203a; }
-  .carousel-track::-webkit-scrollbar { display: none; }
-  .carousel-slide { flex: 0 0 100%; scroll-snap-align: center; display: flex; align-items: center; justify-content: center; }
-  .carousel-slide img { width: 100%; height: 100%; object-fit: contain; display: block; }
-  .carousel-counter { position: absolute; right: 12px; bottom: 10px; background: rgba(29, 61, 122, 0.78); color: var(--cream); border-radius: 999px; padding: 0.25rem 0.6rem; font-size: 0.8rem; }
-  .carousel-frame { position: relative; }
-  .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 38px; height: 38px; border-radius: 50%; border: none; background: rgba(29, 61, 122, 0.76); color: var(--cream); cursor: pointer; font-size: 1.2rem; }
-  .carousel-btn.prev { left: 10px; } .carousel-btn.next { right: 10px; }
   .today-panel { max-width: 820px; margin: 1.5rem auto 0; padding: 0 1.5rem; }
   .today-card { background: linear-gradient(135deg, rgba(29, 61, 122, 0.94), rgba(55, 99, 173, 0.92)); color: var(--cream); border: 1px solid rgba(246, 211, 101, 0.52); border-radius: 12px; box-shadow: 0 10px 30px rgba(29, 61, 122, 0.18); padding: 1.05rem 1.2rem; display: grid; gap: 0.55rem; }
   .today-eyebrow { color: var(--gold); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; }
@@ -89,7 +79,6 @@
   .day.past { opacity: 0.72; }
   footer { text-align: center; padding: 1rem 1.5rem 3rem; color: var(--blue-soft); font-style: italic; }
   @media (max-width: 620px) {
-    main { padding: 1.25rem 0.75rem 3rem; } .carousel { padding: 1.25rem 0.75rem 0; }
     .day-header { align-items: flex-start; flex-direction: column; padding: 1rem 1.1rem; } .chips { justify-content: flex-start; }
     .block { grid-template-columns: 1fr; gap: 0.25rem; padding: 0.95rem 1.1rem; }
     .rides-section { padding: 1rem 1.1rem 1.15rem; } .rides-list li { grid-template-columns: 1fr; gap: 0.15rem; } .rides-list li span { text-align: left; }
@@ -109,15 +98,6 @@
 </header>
 
 <section class="today-panel" id="today-panel" hidden aria-live="polite"></section>
-
-<section class="carousel" id="carousel" aria-label="Trip photos" hidden>
-  <div class="carousel-frame">
-    <button class="carousel-btn prev" type="button" aria-label="Previous photo">&#8592;</button>
-    <div class="carousel-track" id="carousel-track"></div>
-    <button class="carousel-btn next" type="button" aria-label="Next photo">&#8594;</button>
-    <div class="carousel-counter" id="carousel-counter">1 / 1</div>
-  </div>
-</section>
 
 <main>
   <section class="day" data-date="2026-06-02">
@@ -467,36 +447,6 @@
     current.id = 'today';
     panel.hidden = false;
     panel.innerHTML = `<div class="today-card"><div class="today-eyebrow">Today at a glance</div><div class="today-title">${date}: ${title}</div>${firstStops.length ? `<div class="today-details">${firstStops.join(' · ')}</div>` : ''}<div class="today-actions"><a href="#today">Jump to today</a><a href="https://disneyworld.disney.go.com/" target="_blank" rel="noopener">Disney World site</a></div></div>`;
-  })();
-
-  (function () {
-    const section = document.getElementById('carousel');
-    const track = document.getElementById('carousel-track');
-    const counter = document.getElementById('carousel-counter');
-    if (!section || !track || !counter) return;
-    const shuffle = arr => {
-      const a = arr.slice();
-      for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
-      return a;
-    };
-    fetch('photos/manifest.json', { cache: 'no-cache' })
-      .then(r => r.ok ? r.json() : Promise.reject(r.status))
-      .then(raw => {
-        if (!Array.isArray(raw) || raw.length === 0) return;
-        const list = shuffle(raw);
-        list.forEach((name, i) => {
-          const slide = document.createElement('div'); slide.className = 'carousel-slide';
-          const img = document.createElement('img'); img.src = 'photos/' + name; img.alt = 'Disney World trip photo ' + (i + 1); img.loading = i === 0 ? 'eager' : 'lazy'; img.decoding = 'async';
-          slide.appendChild(img); track.appendChild(slide);
-        });
-        section.hidden = false; counter.textContent = '1 / ' + list.length;
-        const prev = section.querySelector('.carousel-btn.prev'); const next = section.querySelector('.carousel-btn.next');
-        const slideWidth = () => track.clientWidth; const indexFromScroll = () => Math.round(track.scrollLeft / slideWidth());
-        const updateCounter = () => { counter.textContent = (indexFromScroll() + 1) + ' / ' + list.length; };
-        const goTo = i => track.scrollTo({ left: i * slideWidth(), behavior: 'smooth' }); const advance = delta => goTo((indexFromScroll() + delta + list.length) % list.length);
-        prev.addEventListener('click', () => advance(-1)); next.addEventListener('click', () => advance(1)); track.addEventListener('scroll', () => requestAnimationFrame(updateCounter));
-      })
-      .catch(() => { /* no manifest/photos yet → carousel stays hidden */ });
   })();
 </script>
 </body>
