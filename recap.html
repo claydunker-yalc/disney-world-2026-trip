@@ -70,6 +70,12 @@
   .story-card { box-shadow: none; border-radius: 10px; padding: 0.95rem; background-color: rgba(255, 250, 240, 0.64); }
   .story-card h3 { color: var(--blue); font-size: 1.03rem; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.45rem; }
   .story-card p { color: var(--ink); opacity: 0.86; font-size: 0.95rem; }
+  .listicle { counter-reset: recap-item; display: grid; gap: 0.85rem; }
+  .listicle article { counter-increment: recap-item; position: relative; padding-left: 3.15rem; }
+  .listicle article::before { content: counter(recap-item); position: absolute; left: 0.85rem; top: 0.85rem; width: 1.75rem; height: 1.75rem; border-radius: 50%; display: grid; place-items: center; background: var(--gold); color: var(--blue); font-weight: 800; font-family: Georgia, 'Times New Roman', serif; box-shadow: 0 2px 0 rgba(29,61,122,0.12); }
+  .mini-list { margin-top: 0.45rem; padding-left: 1.05rem; color: var(--ink); opacity: 0.86; font-size: 0.95rem; }
+  .mini-list li { margin-top: 0.25rem; }
+  .verdict { margin-top: 0.55rem; color: var(--blue); font-weight: 700; font-size: 0.92rem; }
   .recap-list { list-style: none; display: grid; gap: 0.55rem; }
   .recap-list li { padding-left: 1.15rem; position: relative; }
   .recap-list li::before { content: '✦'; position: absolute; left: 0; color: var(--coral); }
@@ -123,8 +129,8 @@
 <main>
   <section class="hero">
     <div class="eyebrow">Trip log · June 2026</div>
-    <h2>Animal Kingdom Lodge, big kid bravery, and Polynesian lawn pizza.</h2>
-    <p>A running family recap of the foods, quotes, ride reactions, logistics wins, soggy finales, and little resort moments from the Disney World trip.</p>
+    <h2>The trip recap, now in snackable list form.</h2>
+    <p>Quick hits from each day: what happened, what mattered, best bites, kid quotes, weird logistics, and the stuff worth remembering.</p>
     <div class="jump-list" aria-label="Jump to recap sections">
       <a href="#june-2">June 2 arrival</a>
       <a href="#june-3">June 3 Animal Kingdom</a>
@@ -133,9 +139,9 @@
   </section>
 
   <section class="stats" aria-label="Trip highlights so far">
-    <div class="stat"><strong>7977</strong><span>Room with a hike</span></div>
+    <div class="stat"><strong>17</strong><span>Quick-hit sections</span></div>
     <div class="stat"><strong>2×</strong><span>FOP + Everest for Poppy</span></div>
-    <div class="stat"><strong>3</strong><span>Lions on Safari</span></div>
+    <div class="stat"><strong>7977</strong><span>Room with a hike</span></div>
     <div class="stat"><strong>Open–close</strong><span>Animal Kingdom first</span></div>
   </section>
 
@@ -156,48 +162,44 @@
     <div class="recap-header">
       <div>
         <div class="recap-date">Tuesday, June 2</div>
-        <div class="recap-title">Arrival + Animal Kingdom Lodge</div>
+        <div class="recap-title">Arrival day, ranked by usefulness</div>
       </div>
       <div class="recap-tag">Kidani / Jambo / Sanaa</div>
     </div>
     <div class="recap-body">
-      <p class="lead">The trip landed cleanly: Michael met, pickup done, Animal Kingdom Lodge by about 1:30, then straight into the first resort-food-and-room-logistics chapter.</p>
-      <div class="story-grid">
+      <p class="lead">The arrival day was mostly about getting in cleanly, finding the room, feeding everyone, and learning that “far from the elevator” can still come with a very good view.</p>
+      <div class="listicle">
         <article class="story-card">
-          <h3><span class="badge hotel">Hotel</span>Room 7977</h3>
-          <p>The room was insanely far from the elevators — cart-pushing past 7901 through 7976 — but the tradeoff was excellent: booked Standard View, received Savanna View.</p>
+          <h3><span class="badge plan">Logistics</span>The travel handoff worked</h3>
+          <p>Michael met the family, pickup was done, and everyone made it to Animal Kingdom Lodge around 1:30. No big arrival drama. That counts.</p>
+          <div class="verdict">Why it mattered: the trip started settled instead of scrambled.</div>
         </article>
         <article class="story-card">
-          <h3><span class="badge food">Lunch</span>The Mara</h3>
-          <p>Poppy crushed the three-cheese flatbread and called it “so good.” Rosie went chicken strips with double apple slices and apple juice. Clay and Kristin shared jerk chicken strips with pineapple salsa.</p>
+          <h3><span class="badge hotel">Hotel</span>Room 7977 was a hike, but the view won</h3>
+          <p>The room was wildly far from the elevators. Clay pushed the cart past 7901 through 7976, which is basically a resort-side quest. The payoff: booked Standard View, got Savanna View.</p>
+          <div class="verdict">Final ruling: annoying walk, excellent upgrade.</div>
+        </article>
+        <article class="story-card">
+          <h3><span class="badge food">Lunch</span>The Mara did its job</h3>
+          <ul class="mini-list">
+            <li>Poppy ate every bite of the three-cheese flatbread and called it “so good.”</li>
+            <li>Rosie went chicken strips, double apple slices, and apple juice.</li>
+            <li>Clay and Kristin split jerk chicken strips with pineapple salsa.</li>
+          </ul>
+          <div class="verdict">Best review: Poppy’s flatbread endorsement.</div>
+        </article>
+        <article class="story-card">
+          <h3><span class="badge food">Dinner</span>Sanaa was mostly about the bread service</h3>
+          <ul class="mini-list">
+            <li>Bread service was famous for a reason. Clay’s favorite sauce was pickled garlic; Kristin leaned chimichurri or hummus.</li>
+            <li>Poppy’s butter chicken with mac and cheese got a 9.5/10.</li>
+            <li>Clay’s braised beef with red beans / rajma masala and jasmine rice was delicious.</li>
+            <li>Kristin’s flat iron steak was only okay: too much fat and gristle, not enough seasoning.</li>
+            <li>Rosie’s tomato soup did not win anyone over.</li>
+          </ul>
+          <div class="verdict">Best bite: bread service. Biggest miss: service, which was underwhelming.</div>
         </article>
       </div>
-      <div class="timeline">
-        <div class="moment">
-          <div class="moment-time">1:30-ish</div>
-          <div><h3>Arrival</h3><p>Animal Kingdom Lodge arrival after pickup, then a walk over to Jambo House for quick service.</p></div>
-        </div>
-        <div class="moment">
-          <div class="moment-time">3:00 PM</div>
-          <div><h3>Walmart delivery</h3><p>Groceries were scheduled for the room-arrival window.</p></div>
-        </div>
-        <div class="moment">
-          <div class="moment-time">Afternoon</div>
-          <div><h3>Pool + splash pad</h3><p>Swimming and splash pad time filled the space before the Sanaa reservation.</p></div>
-        </div>
-      </div>
-      <article class="story-card">
-        <h3><span class="badge food">Dinner</span>Sanaa report card</h3>
-        <ul class="recap-list">
-          <li>Bread service: famous for a reason. Clay’s favorite sauce was pickled garlic; Kristin leaned chimichurri or hummus; Clay also loved the hummus.</li>
-          <li>Kristin’s flat iron steak was only okay — a little too much fat and gristle, and not seasoned well enough.</li>
-          <li>Poppy’s butter chicken with mac and cheese was a 9.5/10 and immediately became one of her favorites.</li>
-          <li>Rosie had kids’ grilled chicken with tomato soup; the soup did not impress.</li>
-          <li>Clay’s braised beef with red beans / rajma masala and jasmine rice was delicious.</li>
-          <li>Drinks: Rosie water, Kristin African Mai Tai, Clay Bee’s Knees, Poppy watermelon lemonade.</li>
-          <li>Service was underwhelming; waitress was Lindsay.</li>
-        </ul>
-      </article>
     </div>
   </section>
 
@@ -205,71 +207,60 @@
     <div class="recap-header">
       <div>
         <div class="recap-date">Wednesday, June 3</div>
-        <div class="recap-title">Animal Kingdom: the full campaign</div>
+        <div class="recap-title">Animal Kingdom in quick hits</div>
       </div>
       <div class="recap-tag">82° and cloudy</div>
     </div>
     <div class="recap-body">
-      <p class="lead">Everyone fell asleep around 8:30 Eastern, then the girls were up before 6 and ready to go. The plan was Animal Kingdom rope drop, and the day became a greatest-hits reel with snacks, pins, rider swap bravery, and a spectacularly soggy finale.</p>
-      <div class="story-grid">
+      <p class="lead">Animal Kingdom became the first all-four-family open-to-close park day. Shorter park hours, yes. Still counts. The day had thrill-ride bravery, actual good animal luck, pin trading, wet shoes, and one very useful clean shirt.</p>
+      <div class="listicle">
         <article class="story-card">
-          <h3><span class="badge ride">Ride</span>Poppy’s thrill résumé</h3>
-          <p>Flight of Passage twice. Expedition Everest twice. After Everest round one: “I think I like it.” During the climb on round two: “Why am I doing this again?” Final verdict: forward hills yes, backward hills in the dark maybe not, champ status confirmed.</p>
+          <h3><span class="badge ride">Ride</span>Poppy built a thrill-ride résumé fast</h3>
+          <p>Flight of Passage twice. Expedition Everest twice. After Everest round one: “I think I like it.” During the second climb: “Why am I doing this again?”</p>
+          <div class="verdict">Final ruling: forward hills yes, backward hills in the dark maybe not.</div>
         </article>
         <article class="story-card">
-          <h3><span class="badge plan">Logistics</span>Blue-tent diplomacy</h3>
-          <p>Kristin worked with the blue-tent cast members to get Lightning Lane plans merged with Courtney and her family for the next day — vacation logistics as treaty negotiation.</p>
-        </article>
-      </div>
-      <article class="story-card">
-        <h3><span class="badge ride">Safari</span>Kilimanjaro animal haul</h3>
-        <p>The Safari delivered a first-time mandrill sighting plus three lions — one male and two lionesses — flamingos, both white and black rhinos, cheetahs, hippos, and ostriches. Poppy’s favorites were the lions; Rosie’s were the flamingos.</p>
-      </article>
-      <div class="timeline">
-        <div class="moment">
-          <div class="moment-time">Rope drop</div>
-          <div><h3>Flight of Passage</h3><p>Completed early, with Poppy getting a bonus second ride. Bathroom breaks and popcorn break survived.</p></div>
-        </div>
-        <div class="moment">
-          <div class="moment-time">Morning</div>
-          <div><h3>Safari + pin economy</h3><p>Kilimanjaro Safaris, lots of pin trading, cookie dough brownie ice cream sandwiches for Poppy and Kristin, a quick sit break, and a popcorn refill for later.</p></div>
-        </div>
-        <div class="moment">
-          <div class="moment-time">Late morning</div>
-          <div><h3>Zootopia in the Tree of Life</h3><p>A seated reset after the early sprint.</p></div>
-        </div>
-        <div class="moment">
-          <div class="moment-time">Midday</div>
-          <div><h3>Mickey, Minnie, Everest</h3><p>Clay handled stroller logistics while Kristin took the girls to meet Mickey and Minnie. Then Everest with rider swap gave Poppy her double run.</p></div>
-        </div>
-        <div class="moment">
-          <div class="moment-time">Lunch</div>
-          <div><h3>Na’vi + Satu’li</h3><p>Rosie earned an Everest gift shop scavenger-hunt badge, the family decompressed on Na’vi River Journey, then ate at Satu’li: cheeseburger pods, wrapped hot dog, beef/shrimp noodle bowl with green onion vinaigrette, margarita, and Clay’s mystery Captain Morgan/chamoy/orange juice drink.</p></div>
-        </div>
-        <div class="moment">
-          <div class="moment-time">Afternoon</div>
-          <div><h3>MagicBand+ + Bluey</h3><p>Rosie needed her own MagicBand+, then the family took the train to Conservation Station to see Bluey.</p></div>
-        </div>
-        <div class="moment">
-          <div class="moment-time">Evening</div>
-          <div><h3>Kali + Nomad Lounge</h3><p>Rosie loved Kali River Rapids and was the only one who wore her poncho. Afterward: Nomad Lounge patio couch booth, churros, Annapurna Zing for Kristin, Spice Trader Classic for Clay, and a fresh clean shirt because Clay thought ahead.</p></div>
-        </div>
-      </div>
-      <div class="story-grid">
-        <article class="story-card">
-          <h3><span class="badge food">Dinner</span>Flame Tree Barbecue</h3>
-          <p>Kristin and the girls handled dinner while Clay did not really want anything. Kristin’s apple salad was delicious; Rosie got the pulled pork kids meal; Poppy went pulled pork, fries, and chicken leg/drumstick meal.</p>
+          <h3><span class="badge ride">Safari</span>The safari actually delivered</h3>
+          <p>Kilimanjaro Safaris had a first-time mandrill sighting, three lions, flamingos, white and black rhinos, cheetahs, hippos, and ostriches.</p>
+          <div class="verdict">Kid favorites: Poppy picked the lions; Rosie picked the flamingos.</div>
         </article>
         <article class="story-card">
-          <h3><span class="badge perk">Finale</span>Already wet, destiny chosen</h3>
-          <p>The family ended the evening with Kali River Rapids again — twice. That turned the day from “park day” into an open-to-close family first.</p>
+          <h3><span class="badge plan">Logistics</span>Kristin handled the blue-tent treaty</h3>
+          <p>Kristin got the Lightning Lane plans merged with Courtney and her family for the next day. Disney logistics, but with diplomacy.</p>
+          <div class="verdict">Why it mattered: all nine people could move through the next park days together.</div>
+        </article>
+        <article class="story-card">
+          <h3><span class="badge food">Snacks</span>The snack economy was strong</h3>
+          <ul class="mini-list">
+            <li>Lots of pin trading.</li>
+            <li>Cookie dough brownie ice cream sandwiches for Poppy and Kristin.</li>
+            <li>A popcorn refill saved for later.</li>
+            <li>Satu’li lunch: cheeseburger pods, wrapped hot dog, beef/shrimp noodle bowl, margarita, and Clay’s mystery Captain Morgan/chamoy/orange juice drink.</li>
+          </ul>
+          <div class="verdict">Most mysterious item: Clay’s unnamed drink.</div>
+        </article>
+        <article class="story-card">
+          <h3><span class="badge ride">Reset</span>The middle of the day had useful resets</h3>
+          <p>Zootopia in the Tree of Life gave everyone a seated break. Na’vi River Journey gave everyone a boat-ride decompression. Rosie earned an Everest gift shop scavenger-hunt badge.</p>
+          <div class="verdict">Best reset: Na’vi after Everest energy.</div>
+        </article>
+        <article class="story-card">
+          <h3><span class="badge perk">Finale</span>Kali River Rapids became the day’s whole personality</h3>
+          <p>Rosie loved Kali and was the only one who wore her poncho. Later, the family rode Kali again twice because everyone was already wet and destiny had apparently been chosen.</p>
+          <div class="verdict">Best preparedness: Clay having a fresh clean shirt ready.</div>
+        </article>
+        <article class="story-card">
+          <h3><span class="badge food">Lounge</span>Nomad Lounge was the adult recovery booth</h3>
+          <p>After Kali, everyone landed on the Nomad Lounge patio couch booth for churros and drinks: Annapurna Zing for Kristin, Spice Trader Classic for Clay.</p>
+          <div class="verdict">Best use case: pretending the wet chaos was actually part of the plan.</div>
+        </article>
+        <article class="story-card">
+          <h3><span class="badge hotel">Resort</span>The night still had a resort side quest</h3>
+          <p>Back at the resort, the family went to Community Hall. Poppy made DIY Minnie ears, Rosie decorated a tumbler, and everyone caught the end of the live-action <em>Lilo &amp; Stitch</em>.</p>
+          <div class="verdict">Clay’s review: an amazing day.</div>
         </article>
       </div>
       <p class="quote">“That was the first time all four of us together had opened and closed a park as a family — it was Animal Kingdom with shorter hours, but hey, we did it.”</p>
-      <article class="story-card">
-        <h3><span class="badge hotel">Resort</span>Community Hall side quest</h3>
-        <p>Back at the resort, nobody was actually donezo: Community Hall, DIY Minnie ears for Poppy, a decorated tumbler for Rosie, and the end of the live-action <em>Lilo &amp; Stitch</em>. Clay called it an amazing day.</p>
-      </article>
     </div>
   </section>
 
@@ -277,12 +268,12 @@
     <div class="recap-header">
       <div>
         <div class="recap-date">Thursday, June 4</div>
-        <div class="recap-title">Polynesian move-in + cousin reunion</div>
+        <div class="recap-title">Polynesian move day, no narrative required</div>
       </div>
       <div class="recap-tag">Boma / Trader Sam’s / Poly lawn</div>
     </div>
     <div class="recap-body">
-      <p class="lead">The family packed up Animal Kingdom Lodge, had Boma, moved over to the Polynesian Tower, and shifted into room-reset-and-reunion mode.</p>
+      <p class="lead">June 4 was the resort-switch day: pack up, eat Boma, move to the Polynesian Tower, reset the room, reunite with cousins, and end on the lawn with pizza and Dole Whips.</p>
       <section class="carousel" id="carousel-june-4" aria-label="June 4 Polynesian Tower photos" data-manifest="photos/manifest-2026-06-04-polynesian.json" data-alt-prefix="June 4 Polynesian Tower trip photo" hidden>
         <div class="carousel-frame">
           <div class="carousel-heading">
@@ -295,32 +286,33 @@
           <div class="carousel-counter">1 / 1</div>
         </div>
       </section>
-      <div class="timeline">
-        <div class="moment">
-          <div class="moment-time">Morning</div>
-          <div><h3>Pack up + Boma</h3><p>Woke up, packed, and had Boma before the resort switch.</p></div>
-        </div>
-        <div class="moment">
-          <div class="moment-time">Midday</div>
-          <div><h3>Poly Tower arrival</h3><p>Took a Lyft to the Polynesian Tower, checked in, and got pool time started.</p></div>
-        </div>
-        <div class="moment">
-          <div class="moment-time">1:30–2:30</div>
-          <div><h3>Trader Sam’s + room check</h3><p>Clay went to Trader Sam’s at 1:30, then left around 2:30 to check out the hotel room with Poppy and Rosie while Kristin stayed by the pool.</p></div>
-        </div>
-        <div class="moment">
-          <div class="moment-time">Afternoon</div>
-          <div><h3>Swimsuit movie reset</h3><p>The girls watched <em>Wreck-It Ralph</em> in bed in their swimsuits while Clay ordered grocery delivery and organized luggage delivery to the room. Kristin finished her book and said the ending was worth the part that got slow.</p></div>
-        </div>
-        <div class="moment">
-          <div class="moment-time">Evening</div>
-          <div><h3>Everyone together</h3><p>Courtney, Christian, Ray, Jude, and Sloane arrived not long after, and everyone was super excited to see each other.</p></div>
-        </div>
+      <div class="listicle">
+        <article class="story-card">
+          <h3><span class="badge food">Breakfast</span>Boma anchored the morning</h3>
+          <p>The family woke up, packed up Animal Kingdom Lodge, and had Boma before the resort switch.</p>
+          <div class="verdict">Best function: making move day feel less like pure logistics.</div>
+        </article>
+        <article class="story-card">
+          <h3><span class="badge hotel">Hotel</span>The Polynesian Tower reset worked</h3>
+          <p>Everyone took a Lyft to the Polynesian Tower, checked in, and got pool time started. Clay went to Trader Sam’s at 1:30, then left around 2:30 to check out the room with Poppy and Rosie while Kristin stayed by the pool.</p>
+          <div class="verdict">Best split: pool time plus room recon.</div>
+        </article>
+        <article class="story-card">
+          <h3><span class="badge plan">Reset</span>The room became a recovery zone</h3>
+          <p>The girls watched <em>Wreck-It Ralph</em> in bed in their swimsuits while Clay handled grocery delivery and luggage delivery. Kristin finished her book and said the ending was worth the slow part.</p>
+          <div class="verdict">Most vacation image: swimsuits in bed, movie on, adults solving logistics.</div>
+        </article>
+        <article class="story-card">
+          <h3><span class="badge perk">Reunion</span>The cousin reunion changed the energy</h3>
+          <p>Courtney, Christian, Ray, Jude, and Sloane arrived not long after, and everyone was very excited to see each other.</p>
+          <div class="verdict">Why it mattered: the trip shifted from family-of-four mode to big-group mode.</div>
+        </article>
+        <article class="story-card">
+          <h3><span class="badge food">Dinner</span>Pizza, Dole Whips, and the Electrical Water Pageant closed it out</h3>
+          <p>Everyone ordered pizza for a picnic at the Polynesian lawn area, followed by Dole Whips. The night ended with the Electrical Water Pageant before everyone headed back to their rooms.</p>
+          <div class="verdict">Best simple plan: lawn pizza with a built-in Disney ending.</div>
+        </article>
       </div>
-      <article class="story-card">
-        <h3><span class="badge food">Dinner</span>Poly lawn picnic</h3>
-        <p>After settling in the room, everyone ordered pizza for a picnic at the Polynesian lawn area, followed by Dole Whips of course. The night ended with the Electrical Water Pageant before everyone headed back to their rooms.</p>
-      </article>
     </div>
   </section>
 
