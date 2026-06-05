@@ -1,13 +1,5 @@
 # Disney World 2026 — Trip So Far
 
-_Source reconstruction from Google Drive folder `Disney trip 2026` and OCR/vision pass over 40 screenshots downloaded on 2026-06-04._
-
-## Source files
-
-- Google Drive folder: `Disney trip 2026` (`1BV83KPcFOWpUihjr0JQrLXB5NF0Mj7M6`)
-- Downloaded screenshots: `/home/clay/projects/disney-world-2026-trip/drive-downloads/2026-06-04-disney-trip-2026/IMG_0718.PNG` through `IMG_0759.PNG`
-- OCR working file: `/home/clay/projects/disney-world-2026-trip/drive-downloads/2026-06-04-disney-trip-2026/ocr_rapidocr.md`
-
 ## Known correction
 
 - “Goal” in the early arrival note was an autocorrect/voice mistake. Correct version: **Michael met**, pickup done, Animal Kingdom Lodge by about 1:30.
@@ -190,20 +182,16 @@ _Source reconstruction from Google Drive folder `Disney trip 2026` and OCR/visio
 - The family watched the end of the **live-action Lilo & Stitch**.
 - Clay called it an **amazing day**.
 
-### Photo batch added June 4
-
-Added a 15-photo Animal Kingdom batch from Clay's Discord upload into the site photo assets:
+### Photo memories
 
 - Pandora / Tree of Life-style family photo with the floating mountains in the background.
-- Table-break shots with Poppy: saluting, smiling, and showing a little figure/toy.
+- Table-break shots with Poppy saluting, smiling, and showing a little figure/toy.
 - Character sign photo with the girls near Bluey/Bingo artwork.
-- Poncho photos before/around water-ride time, including a pink poncho and a red poncho thumbs-up.
+- Poncho photos before and around water-ride time, including a pink poncho and a red poncho thumbs-up.
 - Nomad Lounge / patio-style break with the girls on a couch and a close-up of a themed drink.
-- Several Kali River Rapids boat photos with the girls in ponchos, including waterfall shots and laughing/smiling close-ups.
+- Kali River Rapids boat photos with the girls in ponchos, including waterfall shots and laughing/smiling close-ups.
 - Indoor family photo in a large lodge/restaurant-style space.
 - Garden/statue detail photo from the park.
-
-Photo files are staged as `photos/2026-06-03-animal-kingdom-01.jpg` through `photos/2026-06-03-animal-kingdom-15.jpg`, with raw copies in `photos-raw/`.
 
 ---
 
@@ -219,30 +207,25 @@ Photo files are staged as `photos/2026-06-03-animal-kingdom-01.jpg` through `pho
 - Took a **Lyft to the Polynesian Tower**.
 - Checked in at the Poly Tower.
 - Planned **pool time** after check-in.
+- **Clay went to Trader Sam’s at 1:30 PM** and left around **2:30 PM** to check out the hotel room with **Poppy and Rosie**.
+- **Kristin stayed by the pool**.
 
-### Trader Sam’s
+### Room reset
 
-- **Clay to Trader Sam’s at 1:30 PM**.
+- The girls watched **Wreck-It Ralph** in bed in their swimsuits.
+- Clay ordered grocery delivery and organized luggage delivery to the room.
+- Kristin finished her book and said the ending was worth the part that got slow.
 
-### Admin / recap work
+### Volpe arrival / Polynesian evening
 
-- Clay asked Donn to check out the **Disney 2026 GitHub project**.
-- Donn reported adding a top nav with at least **Itinerary** visible in the screenshot.
-- Clay asked for a recap of the entire channel from the first message to now, including threads, and asked to start/use a markdown file for trip notes.
-- Clay corrected the early note: **“My goal = Michael.”**
-- Clay clarified that the channel is a trip recap scratchpad, not Open Brain material unless explicitly requested.
+- **Courtney, Christian, Ray, Jude, and Sloane** arrived not long after, and everyone was super excited to see each other.
+- Everyone settled into the room, then ordered pizza for a picnic at the **Polynesian lawn area**.
+- Followed by **Dole Whips**, of course.
+- Watched the **Electrical Water Pageant** before heading back to the rooms for the night.
 
 ---
 
-## Operational notes carried forward
+## Lightning Lane notes carried forward
 
-- The screenshots indicate the channel was intended as a **trip-recap scratchpad**, not durable Open Brain material unless explicitly requested.
-- Existing `trip-updates.md` also notes that Kristin got the Lightning Lanes combined so all nine people are together at the same time, with the blue-tent cast member combining into earlier Lightning Lane windows.
-- Existing `trip-updates.md` notes earlier combined Lightning Lane return windows from My Disney Experience screenshots for **June 5, 6, 8, and 9**.
-
-## Uncertainties / cleanup needed
-
-- The exact name of Clay’s Satu’li/Pandora drink with Captain Morgan, chamoy, orange juice, and other ingredients was not visible/known from the screenshots.
-- OCR saw “Jumbo house” in a dictated note, but the corrected location is **Jambo House**.
-- OCR saw “Wright” in “Poppy got to Wright twice”; context indicates **ride twice**.
-- Some screenshots are overlapping Discord captures, so repeated Donn summaries were consolidated into one clean chronology.
+- Kristin got the Lightning Lanes combined so all nine people are together at the same time, with the blue-tent cast member combining into earlier Lightning Lane windows.
+- Earlier combined Lightning Lane return windows are noted for **June 5, 6, 8, and 9**.

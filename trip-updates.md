@@ -14,24 +14,6 @@ Use this as a lightweight staging area for details that should eventually move i
 - [ ] Transportation notes
 - [ ] Packing or weather notes
 
-## Photo batches
-
-When a batch of photos is added, note:
-
-- date added
-- source / context
-- whether `scripts/resize-photos.sh` has been run
-- whether the live page was verified
-
-- 2026-06-04: Added Clay's 15-photo Discord upload as the June 3 Animal Kingdom batch. Raw copies are in `photos-raw/2026-06-03-animal-kingdom-01.jpeg` through `photos-raw/2026-06-03-animal-kingdom-15.jpeg`; optimized site images are in `photos/2026-06-03-animal-kingdom-01.jpg` through `photos/2026-06-03-animal-kingdom-15.jpg`; `photos/manifest.json` was rewritten to include only this June 3 batch.
-
-## Change log
-
-- 2026-06-01: Initial scaffold created.
-- 2026-06-01: Repo renamed to `disney-world-2026-trip`.
-- 2026-06-01: Added update-as-we-go workflow notes.
-- 2026-06-04: Downloaded Google Drive folder `Disney trip 2026`, ran OCR/vision over 40 screenshots, and created `trip-so-far.md`.
-
 ## Operational notes
 
 - 2026-06-04: Kristin got the Lightning Lanes combined so all nine people are together at the same time. Blue-tent cast member said they did a favor by combining into the earlier Lightning Lane windows; if a split-party duplicate remains, treat the earlier time as active for everyone and cancel the later duplicate after all members are moved.
