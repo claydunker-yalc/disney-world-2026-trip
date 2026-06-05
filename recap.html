@@ -139,16 +139,16 @@
     <div class="stat"><strong>Open–close</strong><span>Animal Kingdom first</span></div>
   </section>
 
-  <section class="carousel" id="carousel" aria-label="June 3 Animal Kingdom photos" hidden>
+  <section class="carousel" id="carousel-june-3" aria-label="June 3 Animal Kingdom photos" data-manifest="photos/manifest.json" data-alt-prefix="June 3 Animal Kingdom trip photo" hidden>
     <div class="carousel-frame">
       <div class="carousel-heading">
         <div class="eyebrow">Photo reel</div>
         <h2>June 3 Animal Kingdom</h2>
       </div>
       <button class="carousel-btn prev" type="button" aria-label="Previous photo">&#8592;</button>
-      <div class="carousel-track" id="carousel-track"></div>
+      <div class="carousel-track"></div>
       <button class="carousel-btn next" type="button" aria-label="Next photo">&#8594;</button>
-      <div class="carousel-counter" id="carousel-counter">1 / 1</div>
+      <div class="carousel-counter">1 / 1</div>
     </div>
   </section>
 
@@ -283,6 +283,18 @@
     </div>
     <div class="recap-body">
       <p class="lead">The family packed up Animal Kingdom Lodge, had Boma, moved over to the Polynesian Tower, and shifted into room-reset-and-reunion mode.</p>
+      <section class="carousel" id="carousel-june-4" aria-label="June 4 Polynesian Tower photos" data-manifest="photos/manifest-2026-06-04-polynesian.json" data-alt-prefix="June 4 Polynesian Tower trip photo" hidden>
+        <div class="carousel-frame">
+          <div class="carousel-heading">
+            <div class="eyebrow">Photo reel</div>
+            <h2>June 4 Polynesian Tower</h2>
+          </div>
+          <button class="carousel-btn prev" type="button" aria-label="Previous photo">&#8592;</button>
+          <div class="carousel-track"></div>
+          <button class="carousel-btn next" type="button" aria-label="Next photo">&#8594;</button>
+          <div class="carousel-counter">1 / 1</div>
+        </div>
+      </section>
       <div class="timeline">
         <div class="moment">
           <div class="moment-time">Morning</div>
@@ -322,33 +334,36 @@
 <footer>Small notes, saved magic.</footer>
 <script>
   (function () {
-    const section = document.getElementById('carousel');
-    const track = document.getElementById('carousel-track');
-    const counter = document.getElementById('carousel-counter');
-    if (!section || !track || !counter) return;
     const shuffle = arr => {
       const a = arr.slice();
       for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
       return a;
     };
-    fetch('photos/manifest.json', { cache: 'no-cache' })
-      .then(r => r.ok ? r.json() : Promise.reject(r.status))
-      .then(raw => {
-        if (!Array.isArray(raw) || raw.length === 0) return;
-        const list = shuffle(raw);
-        list.forEach((name, i) => {
-          const slide = document.createElement('div'); slide.className = 'carousel-slide';
-          const img = document.createElement('img'); img.src = 'photos/' + name; img.alt = 'June 3 Animal Kingdom trip photo ' + (i + 1); img.loading = i === 0 ? 'eager' : 'lazy'; img.decoding = 'async';
-          slide.appendChild(img); track.appendChild(slide);
-        });
-        section.hidden = false; counter.textContent = '1 / ' + list.length;
-        const prev = section.querySelector('.carousel-btn.prev'); const next = section.querySelector('.carousel-btn.next');
-        const slideWidth = () => track.clientWidth; const indexFromScroll = () => Math.round(track.scrollLeft / slideWidth());
-        const updateCounter = () => { counter.textContent = (indexFromScroll() + 1) + ' / ' + list.length; };
-        const goTo = i => track.scrollTo({ left: i * slideWidth(), behavior: 'smooth' }); const advance = delta => goTo((indexFromScroll() + delta + list.length) % list.length);
-        prev.addEventListener('click', () => advance(-1)); next.addEventListener('click', () => advance(1)); track.addEventListener('scroll', () => requestAnimationFrame(updateCounter));
-      })
-      .catch(() => { /* no manifest/photos yet → carousel stays hidden */ });
+    document.querySelectorAll('.carousel[data-manifest]').forEach(section => {
+      const track = section.querySelector('.carousel-track');
+      const counter = section.querySelector('.carousel-counter');
+      const manifestUrl = section.dataset.manifest;
+      const altPrefix = section.dataset.altPrefix || 'Disney trip photo';
+      if (!track || !counter || !manifestUrl) return;
+      fetch(manifestUrl, { cache: 'no-cache' })
+        .then(r => r.ok ? r.json() : Promise.reject(r.status))
+        .then(raw => {
+          if (!Array.isArray(raw) || raw.length === 0) return;
+          const list = shuffle(raw);
+          list.forEach((name, i) => {
+            const slide = document.createElement('div'); slide.className = 'carousel-slide';
+            const img = document.createElement('img'); img.src = 'photos/' + name; img.alt = altPrefix + ' ' + (i + 1); img.loading = i === 0 ? 'eager' : 'lazy'; img.decoding = 'async';
+            slide.appendChild(img); track.appendChild(slide);
+          });
+          section.hidden = false; counter.textContent = '1 / ' + list.length;
+          const prev = section.querySelector('.carousel-btn.prev'); const next = section.querySelector('.carousel-btn.next');
+          const slideWidth = () => track.clientWidth; const indexFromScroll = () => Math.round(track.scrollLeft / slideWidth());
+          const updateCounter = () => { counter.textContent = (indexFromScroll() + 1) + ' / ' + list.length; };
+          const goTo = i => track.scrollTo({ left: i * slideWidth(), behavior: 'smooth' }); const advance = delta => goTo((indexFromScroll() + delta + list.length) % list.length);
+          prev.addEventListener('click', () => advance(-1)); next.addEventListener('click', () => advance(1)); track.addEventListener('scroll', () => requestAnimationFrame(updateCounter));
+        })
+        .catch(() => { /* no manifest/photos yet → carousel stays hidden */ });
+    });
   })();
 </script>
 </body>
