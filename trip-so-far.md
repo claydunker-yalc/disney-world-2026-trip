@@ -225,6 +225,24 @@
 
 ---
 
+## June 5, 2026 — Magic Kingdom
+
+### Fantasyland morning
+
+- Reported ride sequence: **Dumbo the Flying Elephant**, then **The Barnstormer**, then **Under the Sea — Journey of the Little Mermaid / Ariel**.
+
+---
+
+## June 6, 2026 — Hollywood Studios
+
+### Morning
+
+- Kids got to sleep in a bit.
+- Arrived at **Hollywood Studios** a little after open.
+- Completed **Alien Swirling Saucers** and **Toy Story Mania** by **10:30 AM**.
+
+---
+
 ## Lightning Lane notes carried forward
 
 - Kristin got the Lightning Lanes combined so all nine people are together at the same time, with the blue-tent cast member combining into earlier Lightning Lane windows.
