@@ -240,6 +240,12 @@
 - Kids got to sleep in a bit.
 - Arrived at **Hollywood Studios** a little after open.
 - Completed **Alien Swirling Saucers** and **Toy Story Mania** by **10:30 AM**.
+- Took a bathroom break.
+- Had **Joffrey’s tea** and **giant donuts**.
+- **Kristin** got the **Cookie Num Num** while the group rested and had food.
+- Rode **Slinky Dog Dash**.
+- The group minus **Rosie** and **Jude** rode **Tower of Terror**; the dads stayed behind with Rosie and Jude.
+- Everyone was back to the room by **1:45 PM**.
 
 ---
 
