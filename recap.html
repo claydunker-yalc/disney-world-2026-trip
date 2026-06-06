@@ -60,11 +60,18 @@
   .stat strong { display: block; color: var(--gold); font-family: 'Didot', 'Bodoni MT', Georgia, serif; font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1.1; }
   .stat span { display: block; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.9; }
   .recap-day { margin-bottom: 1.4rem; }
-  .recap-header { padding: 1.15rem 1.35rem; background: linear-gradient(135deg, var(--blue), var(--blue-soft)); color: var(--cream); border-bottom: 3px solid var(--gold); display: flex; justify-content: space-between; gap: 1rem; align-items: end; }
+  .recap-header { padding: 1.15rem 1.35rem; background: linear-gradient(135deg, var(--blue), var(--blue-soft)); color: var(--cream); border-bottom: 3px solid var(--gold); display: flex; justify-content: space-between; gap: 1rem; align-items: end; cursor: pointer; }
   .recap-date { color: var(--gold); font-size: 0.88rem; font-style: italic; letter-spacing: 0.1em; text-transform: uppercase; }
   .recap-title { font-family: 'Didot', 'Bodoni MT', Georgia, serif; font-size: clamp(1.35rem, 3vw, 2rem); letter-spacing: 0.05em; line-height: 1.1; }
   .recap-tag { border: 1px solid rgba(255,255,255,0.28); background: rgba(255,255,255,0.12); border-radius: 999px; padding: 0.25rem 0.7rem; white-space: nowrap; font-size: 0.82rem; color: var(--cream); }
+  .recap-header-actions { display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; justify-content: flex-end; }
+  .recap-toggle { border: 1px solid rgba(255,255,255,0.34); background: rgba(255,255,255,0.16); color: var(--cream); border-radius: 999px; padding: 0.25rem 0.7rem; font: inherit; font-size: 0.82rem; cursor: pointer; }
+  .recap-toggle::after { content: ' ▾'; }
+  .recap-day.is-collapsed .recap-toggle::after { content: ' ▸'; }
   .recap-body { padding: 1.2rem 1.35rem 1.35rem; display: grid; gap: 1rem; }
+  .recap-day.is-collapsed .recap-body > :not(.carousel) { display: none; }
+  .recap-day.is-collapsed .recap-body:has(> .carousel:not([hidden])) { padding-bottom: 1.35rem; }
+  .recap-day.is-collapsed .recap-body:not(:has(> .carousel:not([hidden]))) { padding-top: 0; padding-bottom: 0; }
   .lead { font-size: 1.05rem; opacity: 0.92; }
   .story-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.85rem; }
   .story-card { box-shadow: none; border-radius: 10px; padding: 0.95rem; background-color: rgba(255, 250, 240, 0.64); }
@@ -112,6 +119,7 @@
     main { padding: 1.25rem 0.75rem 3rem; }
     .stats, .story-grid { grid-template-columns: 1fr; }
     .recap-header { align-items: flex-start; flex-direction: column; }
+    .recap-header-actions { justify-content: flex-start; }
     .moment { grid-template-columns: 1fr; gap: 0.15rem; }
     .hero, .recap-header, .recap-body, .note-card { padding-left: 1.1rem; padding-right: 1.1rem; }
   }
@@ -415,6 +423,55 @@
 <footer>Small notes, saved magic.</footer>
 <script>
   (function () {
+    const initCollapsibleDays = () => {
+      const days = Array.from(document.querySelectorAll('.recap-day'));
+      const setCollapsed = (day, collapsed) => {
+        const toggle = day.querySelector('.recap-toggle');
+        day.classList.toggle('is-collapsed', collapsed);
+        if (toggle) {
+          toggle.textContent = collapsed ? 'Show notes' : 'Hide notes';
+          toggle.setAttribute('aria-expanded', String(!collapsed));
+        }
+      };
+
+      days.forEach(day => {
+        const header = day.querySelector('.recap-header');
+        const body = day.querySelector('.recap-body');
+        const tag = day.querySelector('.recap-tag');
+        if (!header || !body) return;
+
+        if (tag && !tag.parentElement.classList.contains('recap-header-actions')) {
+          const actions = document.createElement('div');
+          actions.className = 'recap-header-actions';
+          tag.replaceWith(actions);
+          actions.appendChild(tag);
+        }
+        const actions = header.querySelector('.recap-header-actions') || header;
+        const toggle = document.createElement('button');
+        toggle.className = 'recap-toggle';
+        toggle.type = 'button';
+        toggle.setAttribute('aria-controls', day.id + '-body');
+        body.id = day.id + '-body';
+        actions.appendChild(toggle);
+        setCollapsed(day, true);
+
+        const flip = () => setCollapsed(day, !day.classList.contains('is-collapsed'));
+        toggle.addEventListener('click', event => { event.stopPropagation(); flip(); });
+        header.addEventListener('click', flip);
+      });
+
+      const expandHashDay = () => {
+        const id = window.location.hash.slice(1);
+        if (!id) return;
+        const day = document.getElementById(id);
+        if (day && day.classList.contains('recap-day')) setCollapsed(day, false);
+      };
+      expandHashDay();
+      window.addEventListener('hashchange', expandHashDay);
+    };
+
+    initCollapsibleDays();
+
     const shuffle = arr => {
       const a = arr.slice();
       for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
